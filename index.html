@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baaita Brownie</title>
+  <meta name="description" content="Baaita Brownie - brownies feitos com carinho, pra fazer você feliz.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="#">
+      <img src="logo.jpeg" alt="Baaita Brownie">
+    </a>
+    <button id="openCart" class="cart-button" type="button">
+      Carrinho <span id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">BAAITA BROWNIE</p>
+        <h1>Feito com carinho,<br>pra fazer você feliz.</h1>
+        <p>Escolha seus brownies favoritos, monte seu pedido e envie tudo pelo WhatsApp.</p>
+        <a href="#cardapio" class="primary-button">Ver cardápio</a>
+      </div>
+      <div class="hero-logo">
+        <img src="logo.jpeg" alt="Logo Baaita Brownie">
+      </div>
+    </section>
+
+    <section id="cardapio" class="menu-section">
+      <div class="section-heading">
+        <p class="eyebrow">NOSSO CARDÁPIO</p>
+        <h2>Escolha seus favoritos</h2>
+      </div>
+      <div id="products" class="products"></div>
+    </section>
+
+    <section class="order-section">
+      <div>
+        <p class="eyebrow">SEU PEDIDO</p>
+        <h2>Pronto para pedir?</h2>
+        <p>Monte seu carrinho, preencha seus dados e envie o pedido pelo WhatsApp.</p>
+      </div>
+      <button id="goToOrder" class="primary-button" type="button">Finalizar pedido</button>
+    </section>
+  </main>
+
+  <div id="cartOverlay" class="overlay"></div>
+
+  <aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Seu carrinho</h2>
+      <button id="closeCart" class="close-button" type="button" aria-label="Fechar">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div id="emptyOrder" class="empty-order">
+      Seu carrinho está vazio.<br>Escolha seus brownies favoritos.
+    </div>
+    <div id="orderSummary" class="order-summary"></div>
+    <button id="sendWhatsApp" class="primary-button full-button" type="button">Enviar pedido pelo WhatsApp</button>
+  </aside>
+
+  <div id="customerModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="closeModal" class="close-button modal-close" type="button" aria-label="Fechar">×</button>
+      <p class="eyebrow">FINALIZAR PEDIDO</p>
+      <h2>Como podemos te encontrar?</h2>
+      <p class="modal-intro">Preencha os dados para montarmos sua mensagem de pedido.</p>
+
+      <label for="customerName">Seu nome</label>
+      <input id="customerName" type="text" placeholder="Digite seu nome" autocomplete="name">
+
+      <label for="deliveryMethod">Forma de entrega</label>
+      <select id="deliveryMethod">
+        <option value="">Selecione</option>
+        <option value="Retirada">Retirada</option>
+        <option value="Entrega">Entrega</option>
+      </select>
+
+      <div id="deliveryFields" class="conditional-fields" hidden>
+        <h3>Endereço para entrega</h3>
+
+        <label for="cidade">Cidade</label>
+        <input id="cidade" type="text" placeholder="Digite sua cidade" autocomplete="address-level2">
+
+        <label for="bairro">Bairro</label>
+        <input id="bairro" type="text" placeholder="Digite seu bairro">
+
+        <label for="rua">Rua</label>
+        <input id="rua" type="text" placeholder="Digite sua rua" autocomplete="street-address">
+
+        <label for="numero">Número da casa ou apartamento</label>
+        <input id="numero" type="text" placeholder="Digite o número">
+
+        <p class="info-box">O valor do frete será informado pelo WhatsApp após o envio do pedido.</p>
+      </div>
+
+      <div id="pickupFields" class="conditional-fields" hidden>
+        <h3>Horário de retirada</h3>
+
+        <label for="pickupTime">Escolha o horário</label>
+        <select id="pickupTime">
+          <option value="">Selecione um horário</option>
+          <option value="12:00">12:00</option>
+          <option value="12:15">12:15</option>
+          <option value="12:30">12:30</option>
+          <option value="12:45">12:45</option>
+          <option value="13:00">13:00</option>
+          <option value="13:15">13:15</option>
+        </select>
+
+        <p class="info-box">Local de retirada: Av. Amazonas, 1815 - Universitário, Lajeado - RS, 95914-106</p>
+      </div>
+
+      <label for="observation">Observação (opcional)</label>
+      <textarea id="observation" rows="3" placeholder="Ex.: Quero receber à tarde"></textarea>
+
+      <button id="generateWhatsApp" class="primary-button full-button" type="button">Gerar pedido no WhatsApp</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
