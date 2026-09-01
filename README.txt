@@ -10,12 +10,12 @@ Site responsivo para a Baaita Brownie, com:
 - Layout responsivo para celular, tablet e computador.
 - Visual inspirado nas cores e estética do cardápio enviado.
 
-## Antes de publicar
-Abra `script.js` e procure:
+## WhatsApp configurado
+O site já está configurado para o WhatsApp da Baaita Brownie: (51) 99625-0507.
 
-const WHATSAPP_NUMBER = "5500000000000";
+Se precisar trocar no futuro, procure em `script.js` a constante `WHATSAPP_NUMBER`.
 
-Troque pelo WhatsApp da empresa no formato:
+Formato usado:
 55 + DDD + número
 Exemplo: 5551999999999
 

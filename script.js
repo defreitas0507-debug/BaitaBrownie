@@ -14,7 +14,7 @@ const PRODUCTS = [
 // ALTERE SOMENTE ESTE NÚMERO para o WhatsApp da empresa.
 // Use DDI + DDD + número, sem espaços, parênteses ou símbolos.
 // Exemplo Brasil: 5551999999999
-const WHATSAPP_NUMBER = "5500000000000";
+const WHATSAPP_NUMBER = "5551996250507";
 
 let cart = JSON.parse(localStorage.getItem("baaitaCart") || "{}");
 
@@ -61,7 +61,7 @@ function renderCart(){
       <div class="qty">
         <button onclick="changeQty('${i.id}',-1)">−</button><strong>${i.qty}</strong><button onclick="changeQty('${i.id}',1)">+</button>
       </div>
-    </div>`).join("") : `<div style="text-align:center;padding:70px 10px;color:#8a6862">Seu carrinho está vazio.<br>Escolha seus brownies favoritos! 🍫</div>`;
+    </div>`).join("") : `<div style="text-align:center;padding:70px 10px;color:#8a6862">Seu carrinho está vazio.<br>Escolha seus brownies favoritos! </div>`;
 
   document.getElementById("emptyOrder").classList.toggle("hidden", !items.length);
   document.getElementById("filledOrder").classList.toggle("hidden", !items.length);
@@ -82,8 +82,7 @@ function closeCart(){
 function openModal(){
   if(!getItems().length){ location.hash="#cardapio"; return; }
   document.getElementById("customerModal").classList.add("show");
-  document.getElementById("configWarning").textContent =
-    WHATSAPP_NUMBER.startsWith("550000") ? "⚠️ Configure o número do WhatsApp no arquivo script.js antes de usar o botão." : "";
+  document.getElementById("configWarning").textContent = "";
 }
 function closeModal(){document.getElementById("customerModal").classList.remove("show")}
 
@@ -99,9 +98,9 @@ document.getElementById("customerForm").addEventListener("submit", e=>{
   const data = new FormData(e.target);
   const items = getItems();
   const total = items.reduce((s,i)=>s+i.price*i.qty,0);
-  let msg = `Olá, Baaita Brownie! 🍫💗%0A%0A`;
+  let msg = `Olá, Baaita Brownie! %0A%0A`;
   msg += `Quero fazer um pedido:%0A`;
-  items.forEach(i => msg += `• ${i.qty}x ${i.name} — ${money(i.qty*i.qty*0 + i.price*i.qty)}%0A`);
+  items.forEach(i => msg += `- ${i.qty}x ${i.name} — ${money(i.price*i.qty)}%0A`);
   msg += `%0A*Total: ${money(total)}*%0A`;
   msg += `Nome: ${data.get("name")}%0A`;
   msg += `Entrega/retirada: ${data.get("delivery")}%0A`;
