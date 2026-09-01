@@ -1,32 +1,20 @@
-# Baaita Brownie — Site
+Baaita Brownie - site atualizado
 
-Site responsivo para a Baaita Brownie, com:
-- Cardápio completo baseado no PDF enviado.
-- Carrinho com quantidade e total.
-- Persistência do carrinho no navegador (localStorage).
-- Formulário de finalização.
-- Geração automática de pedido para WhatsApp.
-- Link para Instagram @baaitabrownie.
-- Layout responsivo para celular, tablet e computador.
-- Visual inspirado nas cores e estética do cardápio enviado.
+Arquivos:
+- index.html
+- style.css
+- script.js
+- logo.png
 
-## WhatsApp configurado
-O site já está configurado para o WhatsApp da Baaita Brownie: (51) 99625-0507.
+WhatsApp configurado: (51) 99625-0507
 
-Se precisar trocar no futuro, procure em `script.js` a constante `WHATSAPP_NUMBER`.
+Entrega:
+- O cliente informa cidade, bairro, rua e número.
+- Apartamento/complemento é opcional.
+- O valor do frete é informado pelo WhatsApp.
 
-Formato usado:
-55 + DDD + número
-Exemplo: 5551999999999
+Retirada:
+- Local: Av. Amazonas, 1815 - Universitário, Lajeado - RS, 95914-106
+- Horários disponíveis: 12:00, 12:15, 12:30, 12:45, 13:00 e 13:15.
 
-Não coloque espaços, parênteses, hífen ou +.
-
-## Como usar
-1. Extraia o ZIP.
-2. Abra `index.html` no navegador para testar.
-3. Configure o WhatsApp no `script.js`.
-4. Para publicar, envie os arquivos `index.html`, `style.css` e `script.js` para qualquer hospedagem de site estático.
-
-## Cardápio utilizado
-Os produtos e preços foram transcritos do cardápio fornecido:
-Tradicional R$5; Branco R$7; Ao Leite R$7; Mesclado R$7; Ninho R$7; Ovomaltine R$9; Nutella R$9; Meio Amargo R$7; Bueno R$9; Bites R$10.
+A logo usada no site é a imagem fornecida pela Baaita Brownie.

@@ -93,6 +93,25 @@ document.getElementById("goToOrder").onclick=()=>{closeCart()};
 document.getElementById("sendWhatsapp").onclick=openModal;
 document.getElementById("closeModal").onclick=closeModal;
 
+const deliveryType = document.getElementById("deliveryType");
+const pickupFields = document.getElementById("pickupFields");
+const deliveryFields = document.getElementById("deliveryFields");
+const pickupTime = document.getElementById("pickupTime");
+
+function updateDeliveryFields(){
+  const type = deliveryType.value;
+  const isPickup = type === "Retirada";
+  const isDelivery = type === "Entrega";
+  pickupFields.classList.toggle("hidden", !isPickup);
+  deliveryFields.classList.toggle("hidden", !isDelivery);
+  pickupTime.required = isPickup;
+  ["city","neighborhood","street","number"].forEach(name=>{
+    document.querySelector(`[name="${name}"]`).required = isDelivery;
+  });
+}
+
+deliveryType.addEventListener("change", updateDeliveryFields);
+
 document.getElementById("customerForm").addEventListener("submit", e=>{
   e.preventDefault();
   const data = new FormData(e.target);
@@ -103,7 +122,21 @@ document.getElementById("customerForm").addEventListener("submit", e=>{
   items.forEach(i => msg += `- ${i.qty}x ${i.name} — ${money(i.price*i.qty)}%0A`);
   msg += `%0A*Total: ${money(total)}*%0A`;
   msg += `Nome: ${data.get("name")}%0A`;
-  msg += `Entrega/retirada: ${data.get("delivery")}%0A`;
+  const delivery = data.get("delivery");
+  msg += `Forma: ${delivery}%0A`;
+
+  if(delivery === "Retirada"){
+    msg += `Horário de retirada: ${data.get("pickupTime")}%0A`;
+    msg += `Local: Av. Amazonas, 1815 - Universitário, Lajeado - RS, 95914-106%0A`;
+  } else if(delivery === "Entrega"){
+    msg += `Cidade: ${data.get("city")}%0A`;
+    msg += `Bairro: ${data.get("neighborhood")}%0A`;
+    msg += `Rua: ${data.get("street")}%0A`;
+    msg += `Número: ${data.get("number")}%0A`;
+    if(data.get("complement")) msg += `Apartamento/complemento: ${data.get("complement")}%0A`;
+    msg += `Frete: valor informado pelo WhatsApp%0A`;
+  }
+
   if(data.get("note")) msg += `Observação: ${data.get("note")}%0A`;
   msg += `%0A@baaitabrownie`;
   if(WHATSAPP_NUMBER.startsWith("550000")){

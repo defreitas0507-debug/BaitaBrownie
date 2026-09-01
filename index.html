@@ -12,11 +12,8 @@
 </head>
 <body>
   <header class="header">
-<img class="site-logo" src="logo.png" alt="Baaita Brownie">
-
     <a class="brand" href="#inicio" aria-label="Baaita Brownie">
-      <span class="brand-mark">B</span>
-      <span><strong>BAAITA</strong><small>BROWNIE</small></span>
+      <img class="brand-logo" src="logo.png" alt="Baaita Brownie">
     </a>
     <nav>
       <a href="#cardapio">Cardápio</a>
@@ -70,7 +67,7 @@
         <p>A Baaita Brownie nasceu para transformar um simples docinho em um momento especial. Cada brownie é preparado com carinho para chegar até você com muito sabor.</p>
         <div class="about-points">
           <div><b></b><span><strong>Feito com carinho</strong><small>Produção artesanal</small></span></div>
-          <div><b></b><span><strong>Para compartilhar</strong><small>Ou guardar só para você 😋</small></span></div>
+          <div><b></b><span><strong>Para compartilhar</strong><small>Ou guardar só para você</small></span></div>
           <div><b></b><span><strong>Do jeitinho Baaita</strong><small>Sabor que fica na memória</small></span></div>
         </div>
       </div>
@@ -86,7 +83,7 @@
         <span class="eyebrow">SEU PEDIDO</span>
         <h2>Pronto para pedir?</h2>
         <p>Monte seu carrinho, preencha seus dados e envie o pedido pelo WhatsApp.</p>
-        <div class="mini-note"> O WhatsApp abre com seu pedido já organizado.</div>
+        <div class="mini-note">O WhatsApp abre com seu pedido já organizado.</div>
       </div>
       <div class="order-preview">
         <div id="emptyOrder">
@@ -105,7 +102,7 @@
 
   <footer>
     <div class="footer-brand">
-      <span class="brand-mark">B</span>
+      <img class="footer-logo" src="logo.png" alt="Baaita Brownie">
       <div><strong>BAAITA BROWNIE</strong><small>Feito com amor, pra fazer você feliz.</small></div>
     </div>
     <div class="footer-links">
@@ -139,13 +136,45 @@
       <form id="customerForm">
         <label>Seu nome<input required name="name" placeholder="Ex.: Bruna"></label>
         <label>Forma de entrega
-          <select name="delivery" required>
+          <select name="delivery" id="deliveryType" required>
             <option value="">Selecione</option>
-            <option>Retirada</option>
-            <option>Entrega</option>
+            <option value="Retirada">Retirada</option>
+            <option value="Entrega">Entrega</option>
           </select>
         </label>
-        <label>Observação (opcional)<textarea name="note" rows="3" placeholder="Ex.: Quero receber à tarde"></textarea></label>
+
+        <div id="pickupFields" class="conditional-fields hidden">
+          <div class="pickup-location">
+            <strong>Local de retirada</strong>
+            <span>Av. Amazonas, 1815 - Universitário, Lajeado - RS, 95914-106</span>
+          </div>
+          <label>Horário de retirada
+            <select name="pickupTime" id="pickupTime">
+              <option value="">Selecione um horário</option>
+              <option>12:00</option>
+              <option>12:15</option>
+              <option>12:30</option>
+              <option>12:45</option>
+              <option>13:00</option>
+              <option>13:15</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="deliveryFields" class="conditional-fields hidden">
+          <div class="address-grid">
+            <label>Cidade<input name="city" placeholder="Ex.: Lajeado"></label>
+            <label>Bairro<input name="neighborhood" placeholder="Ex.: Universitário"></label>
+          </div>
+          <div class="address-grid address-grid-wide">
+            <label>Rua<input name="street" placeholder="Ex.: Rua Amazonas"></label>
+            <label>Número<input name="number" inputmode="numeric" placeholder="Ex.: 1815"></label>
+          </div>
+          <label>Apartamento ou complemento (opcional)<input name="complement" placeholder="Ex.: Apto 202"></label>
+          <div class="freight-note">O valor do frete será informado pelo WhatsApp.</div>
+        </div>
+
+        <label>Observação (opcional)<textarea name="note" rows="3" placeholder="Digite alguma observação sobre o pedido"></textarea></label>
         <button class="btn primary full" type="submit">Gerar pedido no WhatsApp</button>
       </form>
       <small class="config-warning" id="configWarning"></small>

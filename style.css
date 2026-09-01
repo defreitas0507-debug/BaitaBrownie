@@ -42,3 +42,20 @@ footer{padding:35px 8vw;background:#2a1513;color:#f4dfd0;display:flex;align-item
 
 /* Logo oficial Baaita Brownie */
 .site-logo { max-width: 190px; height: auto; display: block; }
+
+/* Atualizações do pedido e identidade visual */
+.brand { display: flex; align-items: center; }
+.brand-logo { width: 118px; height: 76px; object-fit: contain; display: block; }
+.footer-brand { display: flex; align-items: center; gap: 14px; }
+.footer-logo { width: 100px; height: 74px; object-fit: contain; }
+.conditional-fields { display: grid; gap: 14px; }
+.pickup-location { display: grid; gap: 5px; padding: 14px; border: 1px solid rgba(80, 35, 45, .16); border-radius: 14px; background: rgba(255,255,255,.5); color: #5e403d; }
+.pickup-location span { line-height: 1.45; }
+.address-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.address-grid-wide { grid-template-columns: 1fr .55fr; }
+.freight-note { font-size: .86rem; line-height: 1.4; color: #795651; padding: 11px 13px; border-left: 3px solid #d86b8d; background: rgba(216,107,141,.08); border-radius: 8px; }
+.hidden { display: none !important; }
+@media (max-width: 700px) {
+  .brand-logo { width: 100px; height: 64px; }
+  .address-grid, .address-grid-wide { grid-template-columns: 1fr; }
+}
